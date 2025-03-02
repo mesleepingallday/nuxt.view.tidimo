@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap');
+@import "tailwindcss" theme(static);
+@import "@nuxt/ui";
+
+@theme static {
+    /* Brand color */
+    --color-green-50: #EAFAEC;
+    --color-green-100: #BDF0C3;
+    --color-green-200: #9DE9A5;
+    --color-green-300: #70E07C;
+    --color-green-400: #55D963;
+    --color-green-500: #2AD03C;
+    --color-green-600: #26BD37;
+    --color-green-700: #1E942B;
+    --color-green-800: #177221;
+    --color-green-900: #125719;
+
+    /* SC1 */
+    --color-sc1-50: #F8EBFF;
+    --color-sc1-100: #E8C0FF;
+    --color-sc1-200: #DDA1FF;
+    --color-sc1-300: #CD76FF;
+    --color-sc1-400: #C35CFF;
+    --color-sc1-500: #B433FF;
+    --color-sc1-600: #A42EE8;
+    --color-sc1-700: #8024B5;
+    --color-sc1-800: #631C8C;
+    --color-sc1-900: #4C156B;
+
+    /* SC2 */
+    --color-sc2-50: #EDFBFF;
+    --color-sc2-100: #C6F4FF;
+    --color-sc2-200: #ABEEFF;
+    --color-sc2-300: #84E6FF;
+    --color-sc2-400: #6DE1FF;
+    --color-sc2-500: #48DAFF;
+    --color-sc2-600: #42C6E8;
+    --color-sc2-700: #339BB5;
+    --color-sc2-800: #28788C;
+    --color-sc2-900: #1E5C6B;
+
+    /* SC3 */
+    --color-sc3-50: #FFF8E6;
+    --color-sc3-100: #FFEAB0;
+    --color-sc3-200: #FFDF8A;
+    --color-sc3-300: #FFD154;
+    --color-sc3-400: #FFC833;
+    --color-sc3-500: #FFBA00;
+    --color-sc3-600: #E8A900;
+    --color-sc3-700: #B58400;
+    --color-sc3-800: #8C6500;
+    --color-sc3-900: #6B4E00;
+
+    /* Warning */
+    --color-warning-50: #FFEBE8;
+    --color-warning-100: #FFC1B6;
+    --color-warning-200: #FFA393;
+    --color-warning-300: #FF7A62;
+    --color-warning-400: #FF6043;
+    --color-warning-500: #FF3814;
+    --color-warning-600: #E83312;
+    --color-warning-700: #B5280E;
+    --color-warning-800: #8C1F0B;
+    --color-warning-900: #6B1808;
+
+    /* Gray */
+    --color-gray-50: #ebebeb;
+    --color-gray-100: #bfbfbf;
+    --color-gray-200: #a1a1a1;
+    --color-gray-300: #767676;
+    --color-gray-400: #5b5b5b;
+    --color-gray-500: #323232;
+    --color-gray-600: #2e2e2e;
+    --color-gray-700: #242424;
+    --color-gray-800: #1c1c1c;
+    --color-gray-900: #151515;
+
+    --color-black: #1E1F20;
+
+    /* Typography */
+    --font-display: "Mona Sans", "sans-serif";
+    --text-2xl: 32px;
+    --text-md: 18px;
+}
+
+body {
+    font-family: "Mona Sans", sans-serif;
+}
