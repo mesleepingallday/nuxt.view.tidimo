@@ -81,6 +81,9 @@
     --font-display: "Mona Sans", "sans-serif";
     --text-2xl: 32px;
     --text-md: 18px;
+
+    /* Form field */
+    --ui-text-dimmed: text-gray-100 text-base font-medium leading-6 tracking-tighter;
 }
 
 body {
