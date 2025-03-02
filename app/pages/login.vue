@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import * as z from "zod";
-import type { FormError, FormSubmitEvent } from "@nuxt/ui";
+import type {FormError, FormSubmitEvent} from "@nuxt/ui";
 
 const schema = z.object({
   email: z.string().email("Định dạng email không đúng"),
@@ -19,9 +19,9 @@ const state = reactive<Partial<Schema>>({
 const validate = (state: any): FormError[] => {
   const errors = [];
   if (!state.email)
-    errors.push({ name: "email", message: "Email không được để trống" });
+    errors.push({name: "email", message: "Email không được để trống"});
   if (!state.password)
-    errors.push({ name: "password", message: "Mật khẩu không được để trống" });
+    errors.push({name: "password", message: "Mật khẩu không được để trống"});
   return errors;
 };
 
@@ -54,66 +54,67 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       </div>
 
       <UForm
-        :validate="validate"
-        :schema="schema"
-        :state="state"
-        class="space-y-4 w-full"
-        @submit="onSubmit"
+          :validate="validate"
+          :schema="schema"
+          :state="state"
+          class="space-y-4 w-full"
+          @submit="onSubmit"
       >
         <UFormField
-          label="Email"
-          name="email"
+            label="Email" name="email"
+            :ui="{
+          error: 'mt-2 text-red-500'
+
+        }"
         >
           <UInput
-            v-model="state.email"
-            placeholder="Vui lòng nhập địa chỉ email"
-            variant="none"
-            :ui="{
-              root: 'h-14 w-full p-3.5 rounded-lg bg-gray-50 outline-none',
+              v-model="state.email"
+              placeholder="Vui lòng nhập địa chỉ email"
+              variant="none"
+              :ui="{
+              root: 'h-14 w-full p-3.5 rounded-lg bg-gray-50 has-focus:border-b has-focus:border-b-gray-500',
               base: [
-                'w-full outline-none border-0 placeholder:text-gray-100 placeholder:text-base bg-transparent focus:outline-none disabled:cursor-not-allowed disabled:opacity-75',
+                'w-full outline-none border-0 placeholder:text-gray-100 placeholder:text-base bg-transparent disabled:cursor-not-allowed disabled:opacity-75',
               ],
             }"
           />
         </UFormField>
 
-        <UFormField label="Mật khẩu" name="password">
+        <UFormField label="Mật khẩu" name="password" :ui="{ error: 'mt-2 text-red-500' }">
           <UInput
-            v-model="state.password"
-            placeholder="●●●●●●"
-            variant="none"
-            :type="show ? 'text' : 'password'"
-            :ui="{
-              root: 'h-14 w-full p-3.5 rounded-lg bg-gray-50 outline-none',
+              v-model="state.password"
+              placeholder="●●●●●●"
+              :highlight="false"
+              variant="none"
+              :error="false"
+              :type="show ? 'text' : 'password'"
+              :ui="{
+              root: 'h-14 w-full p-3.5 rounded-lg bg-gray-50 has-focus:border-b has-focus:border-b-gray-500',
               base: [
-                'w-full outline-none border-0 placeholder:text-gray-100 placeholder:text-base bg-transparent focus:outline-none disabled:cursor-not-allowed disabled:opacity-75',
+                'w-full border-0 placeholder:text-gray-100 placeholder:text-base bg-transparent disabled:cursor-not-allowed disabled:opacity-75',
               ],
-              input: {
-                error: 'ring-2 ring-green-500 bg-red-50',
-              },
-              error: 'ring-2 ring-green-500 bg-red-50',
             }"
           >
             <template #trailing>
               <button
-                type="button"
-                class="p-1 focus:outline-none"
-                :aria-label="show ? 'Hide password' : 'Show password'"
-                :aria-pressed="show"
-                aria-controls="password"
-                @click="show = !show"
+                  type="button"
+                  class="p-1 focus:outline-none"
+                  :aria-label="show ? 'Hide password' : 'Show password'"
+                  :aria-pressed="show"
+                  aria-controls="password"
+                  @click="show = !show"
               >
                 <img
-                  v-if="show"
-                  src="/img/eye-off.svg"
-                  alt="Hide password"
-                  class="w-6 h-6"
+                    v-if="show"
+                    src="/img/eye-off.svg"
+                    alt="Hide password"
+                    class="w-6 h-6"
                 />
                 <img
-                  v-else
-                  src="/img/eye.svg"
-                  alt="Show password"
-                  class="w-6 h-6"
+                    v-else
+                    src="/img/eye.svg"
+                    alt="Show password"
+                    class="w-6 h-6"
                 />
               </button>
             </template>
@@ -122,39 +123,39 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 
         <div class="flex justify-between">
           <UCheckbox
-            v-model="state.rememberMe"
-            name="rememberMe"
-            label="Ghi nhớ mật khẩu"
-            @update:model-value="!state.rememberMe"
-            class="flex gap-1 items-center"
-            :ui="{
+              v-model="state.rememberMe"
+              name="rememberMe"
+              label="Ghi nhớ mật khẩu"
+              @update:model-value="!state.rememberMe"
+              class="flex gap-1 items-center"
+              :ui="{
               label: 'text-gray-500 text-sm leading-4',
             }"
           />
 
           <ULink
-            to="/forgot-password"
-            class="px-2 py-1 text-gray-500 text-sm leading-4 transition-colors duration-300 hover:text-green-500"
+              to="/forgot-password"
+              class="px-2 py-1 text-gray-500 text-sm leading-4 transition-colors duration-300 hover:text-green-500"
           >
             Quên mật khẩu?
           </ULink>
         </div>
 
         <UButton
-          type="submit"
-          class="bg-green-500 hover:bg-green-600 py-4 px-6 rounded-lg focus:outline-none focus:shadow-outline w-full h-14 flex items-center justify-center hover:cursor-pointer"
+            type="submit"
+            class="bg-green-500 hover:bg-green-600 py-4 px-6 rounded-lg focus:outline-none focus:shadow-outline w-full h-14 flex items-center justify-center hover:cursor-pointer"
         >
           <p class="text-white font-medium leading-6 text-base">Đăng nhập</p>
         </UButton>
       </UForm>
 
       <p
-        class="text-gray-300 text-base font-normal mt-3 flex items-center justify-center leading-6"
+          class="text-gray-300 text-base font-normal mt-3 flex items-center justify-center leading-6"
       >
         Bạn chưa có tài khoản?
         <ULink
-          to="/sign-up"
-          class="text-gray-500 px-2 py-1 font-medium transition-colors duration-300 hover:text-green-500"
+            to="/sign-up"
+            class="text-gray-500 px-2 py-1 font-medium transition-colors duration-300 hover:text-green-500"
         >
           Đăng ký ngay
         </ULink>
@@ -162,10 +163,10 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     </div>
     <div class="w-full md:w-1/2 flex items-center justify-center p-8">
       <img
-        alt="a cute character of tidimo"
-        height="400"
-        src="/img/auth-tree-object.svg"
-        width="400"
+          alt="a cute character of tidimo"
+          height="400"
+          src="/img/auth-tree-object.svg"
+          width="400"
       />
     </div>
   </UContainer>
