@@ -211,7 +211,7 @@ async function onError(event: FormErrorEvent) {
       >
         Bạn chưa có tài khoản?
         <ULink
-          to="/sign-up"
+          to="/register"
           class="text-gray-500 px-1 sm:px-2 py-1 font-medium transition-colors duration-300 hover:text-green-500 ml-1"
         >
           Đăng ký ngay
