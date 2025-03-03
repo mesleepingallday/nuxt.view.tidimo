@@ -77,7 +77,7 @@ async function onError(event: FormErrorEvent) {
           src="/img/key.svg"
           class="w-8 h-auto"
       />
-      <div class="md:text-left mb-6">
+      <div class="md:text-left mb-12">
         <h2 class="text-xl sm:text-2xl text-gray-500 font-bold leading-tight text-center">
           Khôi phục mật khẩu
         </h2>

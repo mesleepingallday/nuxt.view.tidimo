@@ -75,7 +75,7 @@ async function onError(event: FormErrorEvent) {
 <template>
   <UContainer class="bg-white flex items-center justify-center min-h-screen">
     <div class="w-full md:w-1/2 max-w-[392px]">
-      <div class="text-center mb-6">
+      <div class="text-center mb-12">
         <h2 class="text-2xl text-gray-500 font-bold leading-10">
           Đăng nhập tài khoản
         </h2>
