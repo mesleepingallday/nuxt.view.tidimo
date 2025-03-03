@@ -42,7 +42,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
   loading.value = true;
   setTimeout()
   if (
-    event.data.email !== testAccount.email &&
+    event.data.email !== testAccount.email ||
     event.data.password !== testAccount.password
   ) {
     toast.add({
