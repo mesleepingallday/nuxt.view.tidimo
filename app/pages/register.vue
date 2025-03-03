@@ -15,7 +15,7 @@ const state = reactive<Partial<Schema>>({
   email: undefined,
   password: undefined,
   confirmPassword: undefined,
-  isTermsAccepted: undefined,
+  isTermsAccepted: false,
 });
 
 const validate = (state: any): FormError[] => {
@@ -46,6 +46,12 @@ const validate = (state: any): FormError[] => {
       message: "Mật khẩu xác nhận không khớp",
     });
 
+  if (!state.isTermsAccepted) {
+    errors.push({
+      name: "isTermsAccepted",
+      message: "Bạn phải đồng ý với các điều khoản để tiếp tục",
+    });
+  }
   return errors;
 };
 
@@ -141,7 +147,7 @@ async function onError(event: FormErrorEvent) {
 
       <UForm
         :validate="validate"
-        validate-on="blur"
+        validate-on="change"
         :schema="schema"
         :state="state"
         class="space-y-4 w-full"
@@ -287,18 +293,26 @@ async function onError(event: FormErrorEvent) {
           </UInput>
         </UFormField>
 
-        <div class="flex justify-between items-center">
+        <UFormField
+          name="isTermsAccepted"
+          v-slot="{ error: errorisTermsAccepted }"
+          :ui="{ error: 'mt-2 text-red-500' }"
+        >
           <UCheckbox
             v-model="state.isTermsAccepted"
-            name="isTermsAccepted"
             label="Tôi đã đọc các điều khoản và quyền riêng tư"
             @update:model-value="!state.isTermsAccepted"
             class="flex gap-1 items-center"
             :ui="{
+              base:
+                'shrink-0 flex items-center justify-center rounded-(--ui-radius) text-(--ui-bg) ring ring-inset ring-(--ui-border-accented) focus-visible:outline-2 focus-visible:outline-offset-2' +
+                (errorisTermsAccepted && !state.isTermsAccepted
+                  ? ' ring-2 ring-red-500'
+                  : ''),
               label: 'text-gray-500 text-sm sm:text-base leading-4',
             }"
           />
-        </div>
+        </UFormField>
 
         <UButton
           :loading="loading"
@@ -315,7 +329,11 @@ async function onError(event: FormErrorEvent) {
         class="text-gray-300 text-sm sm:text-base font-normal mt-4 flex items-center justify-center leading-6 flex-wrap"
       >
         <ULink to="/login" class="px-1 sm:px-2 py-1 ml-1 flex gap-1">
-          <img alt="icon-arrow-left" src="/img/arrow-left.svg" class="w-5 h-5 sm:w-6 sm:h-6" />
+          <img
+            alt="icon-arrow-left"
+            src="/img/arrow-left.svg"
+            class="w-5 h-5 sm:w-6 sm:h-6"
+          />
           <p
             class="text-gray-500 font-medium transition-colors duration-300 hover:text-green-500"
           >
