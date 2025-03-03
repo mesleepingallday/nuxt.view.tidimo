@@ -65,6 +65,7 @@
 
     /* Gray */
     --color-gray-50: #ebebeb;
+    --color-gray-70: #e4e4e4;
     --color-gray-100: #bfbfbf;
     --color-gray-200: #a1a1a1;
     --color-gray-300: #767676;
@@ -83,7 +84,8 @@
     --text-md: 18px;
 
     /* Form field */
-    --ui-error: #ebebeb;
+    --ui-error: #ffffff00;
+    --ui-warning: #FF3814;
 }
 
 body {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Login Page</h1>
+    <ULink to="/login">Login Page</ULink>
   </div>
 </template>
 
