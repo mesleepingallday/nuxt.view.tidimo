@@ -75,13 +75,24 @@ async function onError(event: FormErrorEvent) {
 </script>
 
 <template>
-  <UContainer class="bg-white flex items-center justify-center min-h-screen">
-    <div class="w-full md:w-1/2 max-w-[392px]">
-      <div class="text-center mb-6">
-        <h2 class="text-2xl text-gray-500 font-bold leading-10">
+  <UContainer
+    class="bg-white flex items-center justify-center min-h-screen px-4 md:px-6 lg:px-8"
+  >
+    <!-- Mobile Image (Top) - Only visible on small screens -->
+    <div class="absolute top-8 md:hidden">
+      <img
+        alt="a cute character of tidimo"
+        src="/img/auth-tree-object.svg"
+        class="w-[150px] h-auto"
+      />
+    </div>
+
+    <div class="w-full md:w-1/2 max-w-[392px] mx-auto md:mx-0 mt-32 md:mt-0">
+      <div class="text-center md:text-left mb-6">
+        <h2 class="text-xl sm:text-2xl text-gray-500 font-bold leading-tight">
           Đăng nhập tài khoản
         </h2>
-        <p class="text-gray-300 text-md font-medium leading-6">
+        <p class="text-sm sm:text-md text-gray-300 font-medium leading-normal">
           Chào bạn! Hãy đăng nhập để vào TIDIMO nhé
         </p>
       </div>
@@ -107,11 +118,11 @@ async function onError(event: FormErrorEvent) {
             variant="none"
             :ui="{
               root: [
-                'h-14 w-full p-3.5 rounded-lg bg-gray-50 has-focus:border-b has-focus:border-b-gray-500 hover:bg-gray-70',
+                'h-12 sm:h-14 w-full p-3 sm:p-3.5 rounded-lg bg-gray-50 has-focus:border-b has-focus:border-b-gray-500 hover:bg-gray-70',
                 errorEmail && 'border-b border-red-500 bg-gray-70',
               ],
               base: [
-                'w-full outline-none border-0 placeholder:text-gray-100 placeholder:text-base bg-transparent disabled:cursor-not-allowed disabled:opacity-75',
+                'w-full outline-none border-0 placeholder:text-gray-100 text-sm sm:text-base placeholder:text-sm sm:placeholder:text-base bg-transparent disabled:cursor-not-allowed disabled:opacity-75',
               ],
             }"
           />
@@ -130,11 +141,11 @@ async function onError(event: FormErrorEvent) {
             :type="show ? 'text' : 'password'"
             :ui="{
               root: [
-                'h-14 w-full p-3.5 rounded-lg bg-gray-50 has-focus:border-b has-focus:border-b-gray-500 hover:bg-gray-70',
+                'h-12 sm:h-14 w-full p-3 sm:p-3.5 rounded-lg bg-gray-50 has-focus:border-b has-focus:border-b-gray-500 hover:bg-gray-70',
                 errorPassword && 'border-b border-red-500 bg-gray-70',
               ],
               base: [
-                'w-full border-0 placeholder:text-gray-100 placeholder:text-base bg-transparent disabled:cursor-not-allowed disabled:opacity-75',
+                'w-full border-0 text-sm sm:text-base placeholder:text-gray-100 placeholder:text-sm sm:placeholder:text-base bg-transparent disabled:cursor-not-allowed disabled:opacity-75',
               ],
             }"
           >
@@ -151,20 +162,20 @@ async function onError(event: FormErrorEvent) {
                   v-if="show"
                   src="/img/eye-off.svg"
                   alt="Hide password"
-                  class="w-6 h-6"
+                  class="w-5 h-5 sm:w-6 sm:h-6"
                 />
                 <img
                   v-else
                   src="/img/eye.svg"
                   alt="Show password"
-                  class="w-6 h-6"
+                  class="w-5 h-5 sm:w-6 sm:h-6"
                 />
               </button>
             </template>
           </UInput>
         </UFormField>
 
-        <div class="flex justify-between">
+        <div class="flex justify-between items-center">
           <UCheckbox
             v-model="state.rememberMe"
             name="rememberMe"
@@ -172,13 +183,13 @@ async function onError(event: FormErrorEvent) {
             @update:model-value="!state.rememberMe"
             class="flex gap-1 items-center"
             :ui="{
-              label: 'text-gray-500 text-sm leading-4',
+              label: 'text-gray-500 text-xs sm:text-sm leading-4',
             }"
           />
 
           <ULink
             to="/forgot-password"
-            class="px-2 py-1 text-gray-500 text-sm leading-4 transition-colors duration-300 hover:text-green-500"
+            class="px-1 sm:px-2 py-1 text-gray-500 text-xs sm:text-sm leading-4 transition-colors duration-300 hover:text-green-500"
           >
             Quên mật khẩu?
           </ULink>
@@ -187,30 +198,33 @@ async function onError(event: FormErrorEvent) {
         <UButton
           :loading="loading"
           type="submit"
-          class="bg-green-500 hover:bg-green-600 py-4 px-6 rounded-lg focus:outline-none focus:shadow-outline w-full h-14 flex items-center justify-center hover:cursor-pointer"
+          class="bg-green-500 hover:bg-green-600 py-3 sm:py-4 px-4 sm:px-6 rounded-lg focus:outline-none focus:shadow-outline w-full h-12 sm:h-14 flex items-center justify-center hover:cursor-pointer mt-2"
         >
-          <p class="text-white font-medium leading-6 text-base">Đăng nhập</p>
+          <p class="text-white font-medium leading-6 text-sm sm:text-base">
+            Đăng nhập
+          </p>
         </UButton>
       </UForm>
 
       <p
-        class="text-gray-300 text-base font-normal mt-3 flex items-center justify-center leading-6"
+        class="text-gray-300 text-sm sm:text-base font-normal mt-4 flex items-center justify-center leading-6 flex-wrap"
       >
         Bạn chưa có tài khoản?
         <ULink
           to="/sign-up"
-          class="text-gray-500 px-2 py-1 font-medium transition-colors duration-300 hover:text-green-500"
+          class="text-gray-500 px-1 sm:px-2 py-1 font-medium transition-colors duration-300 hover:text-green-500 ml-1"
         >
           Đăng ký ngay
         </ULink>
       </p>
     </div>
-    <div class="w-full md:w-1/2 flex items-center justify-center p-8">
+    <div
+      class="w-full md:w-1/2 hidden md:flex items-center justify-center p-4 lg:p-8"
+    >
       <img
         alt="a cute character of tidimo"
-        height="400"
         src="/img/auth-tree-object.svg"
-        width="400"
+        class="w-full max-w-[300px] lg:max-w-[400px] h-auto"
       />
     </div>
   </UContainer>
