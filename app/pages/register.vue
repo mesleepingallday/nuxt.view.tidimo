@@ -86,16 +86,15 @@ const score = computed(
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
   loading.value = true;
-  setTimeout(() => {
+  setTimeout(async () => {
     loading.value = false;
   }, 2000);
   if (
-    event.data.email !== testAccount.email &&
-    event.data.password !== testAccount.password
+    event.data.email === testAccount.email
   ) {
     toast.add({
-      title: "Đăng nhập thất bại",
-      description: "Email hoặc mật khẩu không đúng.",
+      title: "Đăng ký thất bại",
+      description: "Email đăng ký đã được sử dụng.",
       color: "warning",
       duration: 2500,
     });
@@ -103,11 +102,16 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
   }
 
   toast.add({
-    title: "Đăng nhập thành công",
-    description: "Chào mừng bạn trở lại TIDIMO!",
+    title: "Đăng ký thành công",
+    description: "Chào mừng bạn đến với TIDIMO!",
     color: "success",
     duration: 2500,
   });
+  setTimeout(async () => {
+    await navigateTo('/login', {
+      external: true
+    })
+  }, 2000);
   console.log(event.data.email);
 }
 
