@@ -209,7 +209,6 @@ async function onError(event: FormErrorEvent) {
                 class="p-1 focus:outline-none"
                 :aria-label="show ? 'Hide password' : 'Show password'"
                 :aria-pressed="show"
-                aria-controls="password"
                 @click="show = !show"
               >
                 <img
@@ -277,7 +276,6 @@ async function onError(event: FormErrorEvent) {
                 class="p-1 focus:outline-none"
                 :aria-label="show ? 'Hide password' : 'Show password'"
                 :aria-pressed="show"
-                aria-controls="password"
                 @click="show = !show"
               >
                 <img

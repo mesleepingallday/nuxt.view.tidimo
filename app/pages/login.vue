@@ -40,7 +40,9 @@ const testAccount = {
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
   loading.value = true;
-  setTimeout()
+  setTimeout(async () => {
+    loading.value = false;
+  }, 2000);
   if (
     event.data.email !== testAccount.email ||
     event.data.password !== testAccount.password
@@ -60,6 +62,11 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     color: "success",
     duration: 2500,
   });
+  setTimeout(async () => {
+    await navigateTo('/', {
+      external: true
+    })
+  }, 2000);
   console.log(event.data.email);
 }
 
@@ -142,7 +149,6 @@ async function onError(event: FormErrorEvent) {
                 class="p-1 focus:outline-none"
                 :aria-label="show ? 'Hide password' : 'Show password'"
                 :aria-pressed="show"
-                aria-controls="password"
                 @click="show = !show"
               >
                 <img
@@ -183,6 +189,7 @@ async function onError(event: FormErrorEvent) {
         </div>
 
         <UButton
+            :loading="loading"
           type="submit"
           class="bg-green-500 hover:bg-green-600 py-4 px-6 rounded-lg focus:outline-none focus:shadow-outline w-full h-14 flex items-center justify-center hover:cursor-pointer"
         >
